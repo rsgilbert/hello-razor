@@ -1,0 +1,15 @@
+// Run using
+dotnet watch run . 
+
+// setting up ef
+https://learn.microsoft.com/en-us/aspnet/core/tutorials/razor-pages/model?view=aspnetcore-6.0&tabs=visual-studio-code
+
+// scaffold movie crud
+dotnet-aspnet-codegenerator razorpage -m Movie -dc HelloRazorMovieContext -udl -outDir Pages/Movies --referenceScriptLibraries -sqlite
+
+// perform db migrations
+// see: https://learn.microsoft.com/en-us/aspnet/core/tutorials/razor-pages/model?view=aspnetcore-6.0&tabs=visual-studio-code
+dotnet tool install --global dotnet-ef
+dotnet ef migrations add InitialCreate
+dotnet ef database update
+

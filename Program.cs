@@ -1,7 +1,21 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+// choose sqlite for dev and sqlserver for prod
+if(builder.Environment.IsDevelopment())
+{
+    builder.Services.AddDbContext<HelloRazorMovieContext>(options =>
+        options.UseSqlite(builder.Configuration.GetConnectionString("HelloRazorMovieContext")));
+}
+else
+{
+    builder.Services.AddDbContext<HelloRazorMovieContext>(options=>
+        options.UseSqlServer(builder.Configuration.GetConnectionString("ProductionMovieContext")));
+}
 
 var app = builder.Build();
 
@@ -13,7 +27,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
