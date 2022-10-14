@@ -22,9 +22,10 @@ namespace hello_razor.Pages.Movies
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
+            Console.WriteLine("id is " + id);
             if (id == null || _context.Movie == null)
             {
-                return NotFound();
+                return Page();
             }
 
             var movie = await _context.Movie.FirstOrDefaultAsync(m => m.ID == id);

@@ -19,7 +19,7 @@ namespace hello_razor.Pages.Movies
         }
 
         [BindProperty]
-      public Movie Movie { get; set; } = default!;
+        public Movie Movie { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -34,7 +34,7 @@ namespace hello_razor.Pages.Movies
             {
                 return NotFound();
             }
-            else 
+            else
             {
                 Movie = movie;
             }
