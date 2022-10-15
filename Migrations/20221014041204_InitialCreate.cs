@@ -18,7 +18,8 @@ namespace hello_razor.Migrations
                     Title = table.Column<string>(type: "TEXT", nullable: false),
                     ReleaseDate = table.Column<DateTime>(type: "TEXT", nullable: false),
                     Genre = table.Column<string>(type: "TEXT", nullable: false),
-                    Price = table.Column<decimal>(type: "TEXT", nullable: false)
+                    Price = table.Column<decimal>(type: "decimal(1,1)", nullable: false),
+                    Rating = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
